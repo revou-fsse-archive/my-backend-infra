@@ -1,0 +1,40 @@
+// This is your Prisma schema file,
+// learn more about it in the documentation: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl"] // because with Docker node:alpine
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  name     String?
+  email    String  @unique
+  password String
+
+  articles Article[]
+}
+
+model Article {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  title       String
+  slug        String?   @unique
+  description String?
+  body        String
+  published   Boolean   @default(false)
+  publishedAt DateTime?
+
+  author   User?   @relation(fields: [authorId], references: [id])
+  authorId String?
+}

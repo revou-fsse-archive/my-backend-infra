@@ -1,0 +1,29 @@
+# For production
+version: '3.9'
+
+services:
+  database:
+    image: postgres:alpine
+    container_name: my-backend-extra-database
+    hostname: database
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    env_file:
+      - .env
+    restart: always
+  app:
+    image: mhaidarh/my-backend-extra
+    container_name: my-backend-extra-app
+    build: .
+    ports:
+      - 4000:4000
+    env_file:
+      - .env
+    depends_on:
+      - database
+    restart: always
+
+volumes:
+  postgres:
