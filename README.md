@@ -7,13 +7,13 @@
 <a href="https://npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
 </p>
 
-# My Backend Extra
+# My Backend Infra
 
 Simple REST API made with [NestJS](https://github.com/nestjs/nest) and Containerized with Docker.
 
-- Live: <https://my-backend-extra.mhaidarhanif.com>
-- Image: <https://hub.docker.com/r/mhaidarh/my-backend-extra>
-- Repo: <https://github.com/revou-fsse/my-backend-extra>
+- Live: <https://my-backend-infra.mhaidarhanif.com>
+- Image: <https://hub.docker.com/r/mhaidarh/my-backend-infra>
+- Repo: <https://github.com/revou-fsse/my-backend-infra>
 
 ## Prepare Database
 
