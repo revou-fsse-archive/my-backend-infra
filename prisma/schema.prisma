@@ -35,6 +35,8 @@ model Article {
   published   Boolean   @default(false)
   publishedAt DateTime?
 
+  imageUrl String?
+
   author   User?   @relation(fields: [authorId], references: [id])
   authorId String?
 }

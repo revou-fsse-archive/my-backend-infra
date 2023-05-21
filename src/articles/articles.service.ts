@@ -1,10 +1,15 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
+import { createApi as unsplashCreateApi } from "unsplash-js";
 
 import { CreateArticleDto } from "./dto/create-article.dto";
 import { UpdateArticleDto } from "./dto/update-article.dto";
 
 import { PrismaService } from "src/prisma/prisma.service";
 import { createArticleSlug } from "src/utils/slug";
+
+const unsplash = unsplashCreateApi({
+  accessKey: process.env.UNSPLASH_ACCESS_KEY,
+});
 
 @Injectable()
 export class ArticlesService {
@@ -52,10 +57,17 @@ export class ArticlesService {
     return article;
   }
 
-  create(createArticleDto: CreateArticleDto) {
+  async create(createArticleDto: CreateArticleDto) {
+    const result = await unsplash.photos.getRandom({
+      query: createArticleDto.title,
+      count: 1,
+    });
+    const randomImageUrl = result?.response[0]?.urls?.regular;
+
     return this.prisma.article.create({
       data: {
         ...createArticleDto,
+        imageUrl: randomImageUrl || "",
         slug: createArticleSlug(createArticleDto.title),
         publishedAt: createArticleDto.published ? new Date() : null,
       },

@@ -11,7 +11,7 @@ import {
 export class CreateArticleDto {
   @IsString()
   @IsNotEmpty()
-  @MinLength(5)
+  @MinLength(3)
   @ApiProperty({ default: "Example title" })
   title: string;
 

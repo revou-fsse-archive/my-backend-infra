@@ -32,6 +32,9 @@ export class ArticleEntity implements Article {
   updatedAt: Date;
 
   @ApiProperty({ required: false, nullable: true })
+  imageUrl: string | null;
+
+  @ApiProperty({ required: false, nullable: true })
   authorId: string | null;
 
   @ApiProperty({ required: false, type: UserEntity })
