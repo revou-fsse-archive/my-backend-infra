@@ -14,6 +14,7 @@ Simple REST API made with [NestJS](https://github.com/nestjs/nest) and Container
 - Live: <https://my-backend-infra.mhaidarhanif.com>
 - Image: <https://hub.docker.com/r/mhaidarh/my-backend-infra>
 - Repo: <https://github.com/revou-fsse/my-backend-infra>
+- Status: <https://my-status.mhaidarhanif.com>
 
 ## API Documentation
 
