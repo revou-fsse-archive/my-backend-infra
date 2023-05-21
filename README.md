@@ -15,6 +15,33 @@ Simple REST API made with [NestJS](https://github.com/nestjs/nest) and Container
 - Image: <https://hub.docker.com/r/mhaidarh/my-backend-infra>
 - Repo: <https://github.com/revou-fsse/my-backend-infra>
 
+## API Documentation
+
+Base API URLs:
+
+- <http://localhost:4000/api>
+- <https://my-backend-infra.mhaidarhanif.com/api>
+
+Endpoints:
+
+| HTTP     | Endpoint     | Description |
+|:-------- |:------------ |:----------- |
+| `GET`     | `/`              | Show welcome |
+| `POST`    | `/auth/register` | Register new user |
+| `POST`    | `/auth/login`    | Login to user |
+| `GET`     | `/articles`      | Get all articles |
+| `GET`     | `/articles/drafts` | Get all draft articles |
+| `GET`     | `/articles/:id`  | Get one article by id |
+| `POST`    | `/articles`      | Create new article |
+| `PUT`     | `/articles/:id`  | Update one article by id |
+| `PATCH`   | `/articles/:id`  | Update one article by id |
+| `DELETE`  | `/articles`      | Delete all articles |
+| `DELETE`  | `/articles/:id`  | Delete one article by id |
+
+## Architecture Diagram
+
+![diagram](assets/architecture-diagram.png)
+
 ## Prepare Database
 
 Make sure the database is ready before doing any dependency installation.
