@@ -52,12 +52,14 @@ Edit `.env` file for the app:
 ```sh
 DATABASE_URL="postgres://myuser:mypassword@localhost:5432/db"
 JWT_SECRET="abdefghijklmnopqrstuvwxyzabcdefghi"
+UNSPLASH_ACCESS_KEY="abdefghijklmnopqrstuvwxyzabcdefghi"
 ```
 
 - `DATABASE_URL`, can be retreived from your choice:
   - Local database instance
   - Local database container, explained below to run it
 - `JWT_SECRET`, recommended to generate with `scripts/random.sh`
+- `UNSPLASH_ACCESS_KEY`, get it from Unsplash Developer app portal
 
 Run Docker on your machine and run Docker Compose that specifically only run the database instance in the background:
 
@@ -159,8 +161,16 @@ Login, tag, and push the image:
 
 ```
 $ docker login
-$ docker tag my-backend-extra mhaidarh/my-backend-extra
-$ docker push mhaidarh/my-backend-extra
+
+$ docker tag my-backend-infra mhaidarh/my-backend-infra
+# or
+$ docker tag my-backend-infra \
+  asia-southeast2-docker.pkg.dev/project-name/docker/my-backend-infra
+
+$ docker push mhaidarh/my-backend-infra
+# or
+$ docker push \
+  asia-southeast2-docker.pkg.dev/project-name/docker/my-backend-infra
 ```
 
 ## Pull and Run the Container from Docker Hub
@@ -168,23 +178,36 @@ $ docker push mhaidarh/my-backend-extra
 Check if it can be pulled and run:
 
 ```sh
-$ docker pull mhaidarh/my-backend-extra
-$ docker run -p 4000:4000 -d --name my-backend-extra-container mhaidarh/my-backend-extra
+$ docker pull mhaidarh/my-backend-infra
+# or
+$ docker pull \
+  asia-southeast2-docker.pkg.dev/project-name/docker/my-backend-infra
+
+$ docker run -p 4000:4000 -d --name my-backend-infra-container mhaidarh/my-backend-infra
+# or
+$ docker run -p 4000:4000 -d --name my-backend-infra-container asia-southeast2-docker.pkg.dev/project-name/docker/my-backend-infra
+```
+
+Can also run via Docker Compose.
+
+```sh
+$ docker compose up
 ```
 
 ## Check Docker image size
 
 ```sh
-docker inspect -f "{{ .Size }}" mhaidarh/my-backend-extra | numfmt --to=si
+docker inspect -f "{{ .Size }}" mhaidarh/my-backend-infra | numfmt --to=si
 ```
 
-## Deployment on Railway
+## Deployment on Railway or Render
 
 1. Create a new project
 2. Create a PostgreSQL instance
-3. Connect GitHub repo to Railway project, add the environment variables
+3. Connect GitHub repo to the project, add the environment variables
    - `DATABASE_URL`, get automatically from Railway `${{Postgres.DATABASE_URL}}`
    - `JWT_SECRET`, recommended to generate with `scripts/random.sh`
+   - `UNSPLASH_ACCESS_KEY`, get it from Unsplash Developer app portal
 
 ## Test for Assurance
 
