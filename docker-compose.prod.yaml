@@ -1,4 +1,4 @@
-# For production
+# For production on VM
 version: '3.9'
 
 services:
@@ -14,7 +14,7 @@ services:
       - .env
     restart: always
   app:
-    image:  asia-southeast2-docker.pkg.dev/manifest-glyph-385502/docker/my-backend-infra
+    image: asia-southeast2-docker.pkg.dev/manifest-glyph-385502/docker/my-backend-infra
     container_name: my-backend-infra-app
     build: .
     ports:
