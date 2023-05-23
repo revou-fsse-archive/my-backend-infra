@@ -12,7 +12,9 @@
 Simple REST API made with [NestJS](https://github.com/nestjs/nest) and Containerized with Docker.
 
 - Live: <https://my-backend-infra.mhaidarhanif.com>
-- Image: <https://hub.docker.com/r/mhaidarh/my-backend-infra>
+- Images:
+  - <https://hub.docker.com/r/mhaidarh/my-backend-infra>
+  - <https://asia-southeast2-docker.pkg.dev/manifest-glyph-385502/docker/my-backend-infra>
 - Repo: <https://github.com/revou-fsse/my-backend-infra>
 - Status: <https://my-status.mhaidarhanif.com>
 
